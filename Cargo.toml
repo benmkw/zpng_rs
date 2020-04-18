@@ -1,0 +1,39 @@
+[package]
+name = "zpng_rs"
+version = "0.1.0"
+authors = ["Benedikt Mandelkow <benedikt.mandelkow@rwth-aachen.de>"]
+edition = "2018"
+publish = false
+license = "BSD 3-Clause"
+
+[dependencies]
+zstd = "^0.5.1"
+argh = "^0.1.3"
+
+# https://github.com/rust-lang/rfcs/pull/2887
+color-backtrace = {version = "*", optional = true }
+
+[dependencies.image]
+version = "^0.23.3"
+default-features = false
+features = ["jpeg", "webp", "tga", "bmp", "png", "gif", "ico"]
+
+[profile.release]
+# debug = true # for cargo flamegraph
+lto = true
+opt-level = 3
+
+[lib]
+name = "zpng_rs_lib"
+path = "src/lib.rs"
+# crate-type = ["cdylib", "rlib"] # for wasm experiments
+
+[[bin]]
+name = "zpng_rs"
+path = "src/bin/main.rs"
+
+[features]
+ENABLE_RGB_COLOR_FILTER = []
+wasm = []
+
+default = [ "ENABLE_RGB_COLOR_FILTER", "color-backtrace" ]
