@@ -31,6 +31,7 @@ Options:
 
 ## Ideas/ Future Work
 #### (i may not work on them in the short term, they serve as memory for me or ideas for you)
+- add fuzzing
 - deduce output filetype and offer other options than png, (all the ones which are used for input)
 - compile to wasm possible? maybe use in https://github.com/benmkw/svelte_rust_test
     - need to try the (slower) pure rust implementation of zstd for wasm target https://github.com/gyscos/zstd-rs/issues/48#issuecomment-427916136
